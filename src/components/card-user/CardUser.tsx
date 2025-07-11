@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-export default function CardUser({id, firstName, lastName, email, image, userName}: UserType) {
+export default function CardUser({id, firstName, lastName, email, image, username}: UserType) {
   return (
     <Link href={`/user/${id}`} key={id} className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-sm w-full overflow-hidden transition-all duration-300 hover:shadow-indigo-500/50 dark:hover:shadow-blue-900/50">
         <div className="relative h-32 bg-gradient-to-r from-indigo-600 to-blue-700">
@@ -21,7 +21,7 @@ export default function CardUser({id, firstName, lastName, email, image, userNam
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">{firstName} {lastName}</h1>
             <p className="text-indigo-600 dark:text-indigo-400 font-semibold mb-4">Software Developer</p>
             <p className="text-indigo-600 dark:text-indigo-400 font-semibold mb-4">{email}</p>
-            <p className="text-indigo-600 dark:text-indigo-400 font-semibold mb-4">{userName}</p>
+            <p className="text-indigo-600 dark:text-indigo-400 font-semibold mb-4">{username}</p>
             <p className="text-gray-600 dark:text-gray-300 mb-4">Passionate about creating user-friendly web applications and solving complex problems.</p>
             
             <div className="flex justify-center space-x-2">

@@ -1,5 +1,5 @@
-export type Param ={
-    param:{
-        id:string;
-    }
-}
+// export type Param ={
+//     param:{
+//         id:string;
+//     }
+// }

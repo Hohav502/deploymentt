@@ -1,12 +1,15 @@
-
-export type UserType={
+export type UserType = {
     id: number;
     firstName: string;
     lastName: string;
-    userName: string;
+    username: string;
     email: string;
     image: string;
+    age: number;
+    gender?: string;
+    birthDate?: string;
 }
+
 export type UserDetailType = {
     id: number;
     firstName: string;
@@ -23,6 +26,4 @@ export type UserDetailType = {
     phoneNumber: string;
     website: string;
 };
-
-
 

@@ -1,12 +1,13 @@
 'use client'
 
-import { BlogTyoe } from '@/app/types/blogType'
+
+import { BlogType } from '@/app/types/blogType'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { use } from 'react'
 
 export default function BlogCard({ blogs }: {
-    blogs: Promise<BlogTyoe[]>
+    blogs: Promise<BlogType[]>
 }) {
     const allBlogs = use(blogs);
     return (
