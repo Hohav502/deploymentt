@@ -16,7 +16,10 @@ export default async function page() {
     const data  = await getData()
     return (
     <section className='w-[95%] mx-auto mt-5'>
-        <h1 className='text-2xl font-bold mb-5'>Blog Dashboard</h1>
+        <h1 className='text-2xl font-bold mb-5 '>Welcome Bitch to Blog Dashboard 
+          <br />
+          Blog Dashboard 
+          </h1>
       <BlogTable
         columns={columns} data={data}
       />
