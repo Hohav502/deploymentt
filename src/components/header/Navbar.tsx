@@ -4,11 +4,13 @@ import Link from "next/link";
 import { navLink } from "./menu";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-
+import { Button } from "../ui/button";
+import { Badge, ShoppingCart } from "lucide-react";
+import { useAppSelector } from "@/lib/hooks";
 
 export default function NavbarComponent() {
     const pathname = usePathname();
-
+    const { itemsCount } = useAppSelector((state) => state.cart) // Total items in cart
     useEffect(() => {
         const toggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -38,11 +40,11 @@ export default function NavbarComponent() {
                     <div className="hidden md:flex space-x-6 text-white font-medium">
                         {
                             navLink.map((item, index) => (
-                                <Link 
-                                key={index}
-                                href={item.path} 
-                                className={`${pathname === item.path ? 'text-amber-300' : ''}hover:text-yellow-300 transition`}>
-                                    {item.name} 
+                                <Link
+                                    key={index}
+                                    href={item.path}
+                                    className={`${pathname === item.path ? 'text-amber-300' : ''}hover:text-yellow-300 transition`}>
+                                    {item.name}
                                 </Link>
                             ))
                         }
@@ -50,9 +52,24 @@ export default function NavbarComponent() {
 
                     {/* <!-- Desktop Button --> */}
                     <div className="hidden md:block">
-                        <a href="#" className="bg-white text-indigo-700 px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold">
+                        <Link href="#" className="bg-white text-indigo-700 px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold">
                             Get Started
-                        </a>
+                        </Link>
+                        {/* Cart Button with Badge */}
+                        <Link href="/cart">
+                            <Button variant="ghost" size="icon" className="relative">
+                                <ShoppingCart className="h-5 w-5" />
+                                {/* Show badge only if there are items in cart */}
+                                {itemsCount > 0 && (
+                                    <Badge
+                                        fontVariant="destructive"
+                                        className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                                    >
+                                        {itemsCount}
+                                    </Badge>
+                                )}
+                            </Button>
+                        </Link>
                     </div>
 
                     {/* <!-- Mobile Menu Button --> */}
@@ -68,17 +85,33 @@ export default function NavbarComponent() {
             <div id="mobile-menu" className="md:hidden hidden px-4 pb-4 space-y-2 text-white font-medium">
                 {
                     navLink.map((item, index) => (
-                        <Link 
-                        key={index}
-                        href={item.path} 
-                        className={`${pathname === item.path ? 'text-black' : ''}hover:text-yellow-300 transition`}>
+                        <Link
+                            key={index}
+                            href={item.path}
+                            className={`${pathname === item.path ? 'text-black' : ''}hover:text-yellow-300 transition`}>
                             {item.name}
                         </Link>
                     ))
                 }
-                <a href="#" className="block bg-white text-indigo-700 text-center px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold mt-2">
+
+                <Link href="#" className="block bg-white text-indigo-700 text-center px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold mt-2">
                     Get Started
-                </a>
+                </Link>
+                {/* Cart Button with Badge */}
+               <Link href="/cart">
+                            <Button variant="ghost" size="icon" className="relative">
+                                <ShoppingCart className="h-5 w-5" />
+                                {/* Show badge only if there are items in cart */}
+                                {itemsCount > 0 && (
+                                    <Badge
+                                        fontVariant="destructive"
+                                        className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                                    >
+                                        {itemsCount}
+                                    </Badge>
+                                )}
+                            </Button>
+                        </Link>
             </div>
         </nav>
     )

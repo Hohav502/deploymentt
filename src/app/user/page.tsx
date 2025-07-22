@@ -1,6 +1,6 @@
 "use client";
 import CardUser from "@/components/card-user/CardUser";
-import { UserType } from "../types/userType";
+import { UserType } from "../../types/userType";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
